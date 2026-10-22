@@ -281,6 +281,7 @@ footer{background:var(--ink);color:rgba(250,248,244,0.45);padding:5rem 5vw 3rem;
 .illus-cap{padding:.7rem 1rem;border-top:1px solid rgba(0,0,0,0.04);}
 .illus-cap-title{font-family:"Cormorant",serif;font-size:.95rem;font-weight:500;color:var(--ink);}
 .illus-cap-sub{font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-top:.15rem;}
+.portfolio-note{font-size:.67rem;color:var(--ink3);line-height:1.6;margin:-.35rem 0 1rem;font-style:italic;}
 
 /* Process section */
 .process-grid{display:grid;grid-template-columns:1fr 2fr;gap:5rem;align-items:start;}
@@ -589,9 +590,8 @@ footer{background:var(--ink);color:rgba(250,248,244,0.45);padding:5rem 5vw 3rem;
 
     <!-- Gallery tabs -->
     <div class="gal-nav">
-      <button class="gal-tab on" onclick="showGalSection('projects',this)">Client Projects</button>
+      <button class="gal-tab on" onclick="showGalSection('projects',this)">Portfolio</button>
       <button class="gal-tab" onclick="showGalSection('illustrations',this)">Illustrations</button>
-      <button class="gal-tab" onclick="showGalSection('process',this)">Process</button>
     </div>
 
     <!-- PROJECTS -->
@@ -789,6 +789,24 @@ function showGalSection(name, btn) {
   document.getElementById('gal-'+name).classList.add('on');
   if(btn) btn.classList.add('on');
 }
+
+// ── LIVE DRIVE PORTFOLIO ──
+// Images are intentionally served from the owner's Google Drive folders so this
+// gallery stays connected to the selected event artwork and photography.
+const driveThumb=id=>`https://drive.google.com/thumbnail?id=${id}&sz=w1200`;
+const portfolioEvents=[
+  {type:'Wedding',title:'Darina Garden Wedding',images:['1Svr36_4n3X8uWt7nfPl7yxCn4BjFSszu','1VtXo7M5q0Pe13hAg1Jrxi1ouJb3vAhqr','1IjOyH_tCeG17Zbk3hoxCSH7cWFh0htE2'],brief:'A thoughtfully curated dessert experience created to celebrate Darina’s garden wedding. Every detail was selected to feel personal to the occasion.',tags:['Wedding celebration','Custom dessert experience']},
+  {type:'Corporate celebration',title:'A+ Garage Door 20-Year Anniversary',images:['1xr3_-9f6Ki6UAuPLU9mRQVKIEpq7rIsk','1-YdClzzIVxzFAZUuojU_0qS5f16KtvkM','1Mdqu4fZyYLVT5tGP-1aUSdZpjHlhZYSQ'],brief:'A celebratory catered dessert service made for a 20-year company milestone, with a polished presentation designed around the event.',tags:['20-year milestone','Catered dessert service']},
+  {type:'Birthday celebration',title:"Faye’s Birthday Celebration",images:['1E5TzUI06HUBlJ7z8H3_7mnydUZvn3MJ2','1YwFSXfuLzgJZoVUyGIKZIYZQfYZk1_UK','1yotla1S0h8152E9aUaKWzeET40sIcDoA'],brief:'A custom celebration designed to make a meaningful birthday feel even more special—one thoughtful detail, beautiful dessert, and shared moment at a time.',tags:['Milestone birthday','Custom celebration']},
+  {type:'Birthday celebration',title:"Shaun’s 50th Birthday",images:['1oBz2oqgb7HJPjyhxPsDfRPGOenUmgoHL','1Vvh1KnHvpklkEvYw2_TFqCNMegSXjxP8','1-YkZV9YabzkK01qjKMIOFt14pdU65ny-'],brief:'A personalized 50th birthday dessert experience crafted to honor the guest of honor and bring an extra layer of joy to the gathering.',tags:['50th birthday','Custom dessert service']},
+  {type:'Bachelorette dinner',title:'Wildly in Love Bachelorette Dinner',images:['1LCJkZC0HHHchW_BPfxzzji25gvfHTEGc','1DsQadJ1IkB9wGyoFb4YCfqeG-vfV3ULL','10fSzBd6bGumwtj4A5qdabgtW2G3VOolz'],brief:'A joyful, one-of-a-kind dessert experience for a bachelorette dinner—created to complement the celebration and make the table feel unforgettable.',tags:['Bachelorette dinner','Curated dessert experience']},
+  {type:'Cake collection',title:'Custom Cakes',images:['1OC15zVMNj-kEsMPLR6qdjCqcKqxlKIjY','17vlNcc6j2HX0yPWeOPr3mXAg4tz9oJgl','1rOumasxkCey8xG4_eT9G6pigaByLBeEO'],brief:'A collection of custom cakes made for celebrations of every size, with intentional design, personal details, and a finish that feels made just for the moment.',tags:['Custom cakes','Celebration designs']}
+];
+const illustrationItems=[
+  ['1bp2-UNQPyRmboHlbFT9claKVRvA16EHm','Assorted Themed Desserts'],['1eBIOa11AlqSxUuAUOT5uDv7u2n701Mqc','Apple of My Eye Cocktail'],['1CdXW7dNNRIC_5WIkWlOAbA6MlNUURwzn','Peach Prosciutto Wedge'],['1ug0JiRF73GHLZVEsxo9FLYKOINxJcBnw','Toasted Pecan Brownies'],['1noHwv8JTVfjXvLMGq5zuj2E9mGzhGh-e','Peppermint Kiss Brownies'],['1fRpSvWaXvFpSFuBWkL9pQxo3bjtKUVJL','Berry Bliss Cheesecakes'],['125Qf_3i_7pmnbreZitHvU7ILnMCCOBVB','Salted Caramel Chocolate Mousse Cups'],['1wnv62AMeQKyeoSlspgcwyE7XuCYS51vV','White Chocolate Strawberry Mousse Cups'],['1PmWgbg0rJDqP1NSoM-K0d90mXC39rsLw','Smoked Teriyaki Sausage & Pineapple'],['1T4En_QHXr8xonvr4ZEAD31WdxzSFkAG_','Tzatziki Meatball Skewers'],['1Pu1YmAUzBmcf5K56m9G4nH-eTzvSkJNT','Lox Cucumber Bites'],['1w0x9_TM_o6lMP-6HGV6bqxbnpHhjyS6L','Aunt Fawn’s Caramel Popcorn'],['1Pg5z0tJfy9rRQVmGqIEAPu62Fyn-aOTl','Pumpkin Rolls'],['1mw9ItV0TtUUFWBh_YiozQN6gIxMHmm8h','Pumpkin Cookies']
+];
+document.getElementById('gal-projects').innerHTML=`<div style="margin-bottom:2rem;"><p class="s-p">A look at the celebrations we have been honored to serve. Event-specific guest count, location, and catered-service details will be added as each story is finalized.</p></div><div class="portfolio-grid">${portfolioEvents.map(e=>`<article class="portfolio-card"><div class="pc-images"><div class="pc-img pc-img-main"><img src="${driveThumb(e.images[0])}" alt="${e.title}"></div><div class="pc-img pc-img-sub"><img src="${driveThumb(e.images[1])}" alt="${e.title} detail"></div><div class="pc-img pc-img-sub"><img src="${driveThumb(e.images[2])}" alt="${e.title} detail"></div></div><div class="pc-body"><div class="pc-event-type"><span class="pc-event-dot"></span><span class="pc-event-label">${e.type}</span></div><h3 class="pc-title">${e.title}</h3><p class="pc-brief">${e.brief}</p><p class="portfolio-note">Package details coming soon: guest count, location &amp; catered services.</p><div class="pc-params">${e.tags.map(t=>`<span class="pc-param green">${t}</span>`).join('')}</div></div></article>`).join('')}</div>`;
+document.getElementById('gal-illustrations').innerHTML=`<div style="max-width:560px;margin-bottom:2.5rem;"><p class="s-p">Original event illustrations by Breezy Bakes. Each drawing is titled by its menu item and displayed here as its own gallery.</p></div><div class="illus-grid">${illustrationItems.map(([id,title])=>`<figure class="illus-item"><img src="${driveThumb(id)}" alt="${title}"><figcaption class="illus-cap"><div class="illus-cap-title">${title}</div></figcaption></figure>`).join('')}</div>`;
 
 // ── PRODUCTS ──
 const imgMap = {
