@@ -122,8 +122,14 @@ nav a:hover::after,nav a.active::after{transform:scaleX(1);}
 .p-card{background:var(--paper2);border:1px solid var(--bdr);border-radius:3px;overflow:hidden;cursor:none;transition:all .35s cubic-bezier(.4,0,.2,1);}
 .p-card:hover{transform:translateY(-7px);box-shadow:0 20px 60px rgba(122,92,62,0.12);border-color:rgba(200,168,130,0.4);}
 .p-img{position:relative;overflow:hidden;background:#faf8f4;display:flex;align-items:center;justify-content:center;}
-.p-img img{width:100%;display:block;transition:transform .5s ease;}
+.p-img img{width:100%;display:block;transition:transform .5s ease;filter:sepia(.13) saturate(.86) contrast(1.05) brightness(1.01);}
 .p-card:hover .p-img img{transform:scale(1.04);}
+.media-color{filter:sepia(.13) saturate(.86) contrast(1.05) brightness(1.01);}
+.media-mono{filter:grayscale(1) contrast(1.08) brightness(1.03);}
+.hero-art.home-drawings{width:100%;max-width:600px;height:420px;}
+.hero-art.home-drawings .sk-main{width:100%;top:20px;}
+.hero-art.home-drawings .sk-main img{height:360px;object-fit:cover;object-position:center;}
+.hero-art.home-drawings .sk-sm,.hero-art.home-drawings .wc-tag{display:none;}
 .p-badge{position:absolute;top:.8rem;left:.8rem;font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .65rem;border-radius:100px;font-weight:500;}
 .bp{background:var(--wh);color:var(--brd);}
 .bs{background:rgba(92,122,94,0.14);color:var(--grd);border:1px solid rgba(92,122,94,0.25);}
@@ -282,6 +288,18 @@ footer{background:var(--ink);color:rgba(250,248,244,0.45);padding:5rem 5vw 3rem;
 .illus-cap-title{font-family:"Cormorant",serif;font-size:.95rem;font-weight:500;color:var(--ink);}
 .illus-cap-sub{font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-top:.15rem;}
 .portfolio-note{font-size:.67rem;color:var(--ink3);line-height:1.6;margin:-.35rem 0 1rem;font-style:italic;}
+.portfolio-card{cursor:pointer;}
+.pc-images .pc-img-sub{display:none;}
+.pc-img-main img{height:360px;}
+.event-modal{position:fixed;inset:0;background:rgba(35,31,28,.88);z-index:500;overflow:auto;padding:5rem 5vw 3rem;display:none;}
+.event-modal.on{display:block;}
+.event-modal-inner{max-width:1200px;margin:auto;color:var(--paper);}
+.event-modal-top{display:flex;justify-content:space-between;gap:2rem;align-items:flex-start;margin-bottom:2rem;}
+.event-modal-top h2{font-family:"Cormorant",serif;font-weight:400;font-size:2.3rem;margin:0;}
+.event-close{border:1px solid rgba(255,255,255,.45);background:transparent;color:var(--paper);padding:.65rem 1rem;font:500 .65rem "DM Sans",sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;}
+.event-photo-grid{columns:3;gap:1rem;}
+.event-photo-grid img{width:100%;display:block;margin:0 0 1rem;break-inside:avoid;background:var(--paper2);}
+@media(max-width:700px){.event-modal{padding:4rem 1rem 2rem;}.event-modal-top h2{font-size:1.8rem;}.event-photo-grid{columns:1;}}
 
 /* Process section */
 .process-grid{display:grid;grid-template-columns:1fr 2fr;gap:5rem;align-items:start;}
@@ -379,7 +397,6 @@ footer{background:var(--ink);color:rgba(250,248,244,0.45);padding:5rem 5vw 3rem;
   <ul>
     <li><a href="#" onclick="showPage('main',this);scrollTo('philosophy')">Our Way</a></li>
     <li><a href="#" onclick="showPage('gallery',this)" class="nav-gallery-link">Portfolio</a></li>
-    <li><a href="#" onclick="showPage('main',this);scrollTo('packages')">Packages</a></li>
     <li><a href="#" onclick="showPage('main',this);scrollTo('inquiry')" style="color:var(--grd);font-weight:500;">Inquiry</a></li>
   </ul>
   <a href="#" class="btn-fill" onclick="showPage('main',null);scrollTo('inquiry')" style="padding:.5rem 1.4rem;font-size:.7rem;">Get in Touch</a>
@@ -563,7 +580,7 @@ footer{background:var(--ink);color:rgba(250,248,244,0.45);padding:5rem 5vw 3rem;
         <a href="#" class="f-logo" onclick="showPage('main',null)">Breezy<span>Bakes</span></a>
         <p>Custom bakery &amp; catering. Menus built around your vision, your flavors, your occasion — with original ink &amp; watercolor illustrations. Made for <span style="color:#c43b32;">you</span> — only ever for you.</p>
       </div>
-      <div class="f-col"><h4>Explore</h4><ul><li><a href="#" onclick="scrollTo('philosophy')">Our Way</a></li><li><a href="#" onclick="scrollTo('shop')">The Menu</a></li><li><a href="#" onclick="showPage('gallery',null)">Portfolio</a></li><li><a href="#" onclick="scrollTo('packages')">Packages</a></li></ul></div>
+      <div class="f-col"><h4>Explore</h4><ul><li><a href="#" onclick="scrollTo('philosophy')">Our Way</a></li><li><a href="#" onclick="scrollTo('shop')">The Menu</a></li><li><a href="#" onclick="showPage('gallery',null)">Portfolio</a></li></ul></div>
       <div class="f-col"><h4>Services</h4><ul><li><a href="#">Custom Desserts</a></li><li><a href="#">Savory Appetizers</a></li><li><a href="#">Event Catering</a></li><li><a href="#">Menu Illustrations</a></li></ul></div>
       <div class="f-col"><h4>Say Hello</h4><ul><li><a href="#"><span class="__cf_email__" data-cfemail="9bf3fef7f7f4dbf9e9fefee1e2f9faf0fee8b5f8f4f6">[email&#160;protected]</span></a></li><li><a href="#">(555) 012-3456</a></li><li><a href="#">Instagram</a></li><li><a href="#">Pinterest</a></li></ul></div>
     </div>
@@ -795,18 +812,31 @@ function showGalSection(name, btn) {
 // gallery stays connected to the selected event artwork and photography.
 const driveThumb=id=>`https://drive.google.com/thumbnail?id=${id}&sz=w1200`;
 const portfolioEvents=[
-  {type:'Wedding',title:'Darina Garden Wedding',images:['1Svr36_4n3X8uWt7nfPl7yxCn4BjFSszu','1VtXo7M5q0Pe13hAg1Jrxi1ouJb3vAhqr','1IjOyH_tCeG17Zbk3hoxCSH7cWFh0htE2'],brief:'A thoughtfully curated dessert experience created to celebrate Darina’s garden wedding. Every detail was selected to feel personal to the occasion.',tags:['Wedding celebration','Custom dessert experience']},
-  {type:'Corporate celebration',title:'A+ Garage Door 20-Year Anniversary',images:['1xr3_-9f6Ki6UAuPLU9mRQVKIEpq7rIsk','1-YdClzzIVxzFAZUuojU_0qS5f16KtvkM','1Mdqu4fZyYLVT5tGP-1aUSdZpjHlhZYSQ'],brief:'A celebratory catered dessert service made for a 20-year company milestone, with a polished presentation designed around the event.',tags:['20-year milestone','Catered dessert service']},
-  {type:'Birthday celebration',title:"Faye’s Birthday Celebration",images:['1E5TzUI06HUBlJ7z8H3_7mnydUZvn3MJ2','1YwFSXfuLzgJZoVUyGIKZIYZQfYZk1_UK','1yotla1S0h8152E9aUaKWzeET40sIcDoA'],brief:'A custom celebration designed to make a meaningful birthday feel even more special—one thoughtful detail, beautiful dessert, and shared moment at a time.',tags:['Milestone birthday','Custom celebration']},
-  {type:'Birthday celebration',title:"Shaun’s 50th Birthday",images:['1oBz2oqgb7HJPjyhxPsDfRPGOenUmgoHL','1Vvh1KnHvpklkEvYw2_TFqCNMegSXjxP8','1-YkZV9YabzkK01qjKMIOFt14pdU65ny-'],brief:'A personalized 50th birthday dessert experience crafted to honor the guest of honor and bring an extra layer of joy to the gathering.',tags:['50th birthday','Custom dessert service']},
-  {type:'Bachelorette dinner',title:'Wildly in Love Bachelorette Dinner',images:['1LCJkZC0HHHchW_BPfxzzji25gvfHTEGc','1DsQadJ1IkB9wGyoFb4YCfqeG-vfV3ULL','10fSzBd6bGumwtj4A5qdabgtW2G3VOolz'],brief:'A joyful, one-of-a-kind dessert experience for a bachelorette dinner—created to complement the celebration and make the table feel unforgettable.',tags:['Bachelorette dinner','Curated dessert experience']},
-  {type:'Cake collection',title:'Custom Cakes',images:['1OC15zVMNj-kEsMPLR6qdjCqcKqxlKIjY','17vlNcc6j2HX0yPWeOPr3mXAg4tz9oJgl','1rOumasxkCey8xG4_eT9G6pigaByLBeEO'],brief:'A collection of custom cakes made for celebrations of every size, with intentional design, personal details, and a finish that feels made just for the moment.',tags:['Custom cakes','Celebration designs']}
+  {type:'Wedding',title:'Darina Garden Wedding',images:['1Svr36_4n3X8uWt7nfPl7yxCn4BjFSszu','1VtXo7M5q0Pe13hAg1Jrxi1ouJb3vAhqr','1IjOyH_tCeG17Zbk3hoxCSH7cWFh0htE2','1GD5c3xFlMUiFBAnNL1ZxHTCQggzcgoT1','1uLGlQNd_DUjmPnOFexZpQ6zPCVWYEzsm','133uMsJWgWD56z6TeO7rgMtHYp8QMKa4G'],brief:'A thoughtfully curated dessert experience created to celebrate Darina’s garden wedding. Every detail was selected to feel personal to the occasion.',tags:['Wedding celebration','Custom dessert experience']},
+  {type:'Corporate celebration',title:'A+ Garage Door 20-Year Anniversary',images:['1-YdClzzIVxzFAZUuojU_0qS5f16KtvkM','1Mdqu4fZyYLVT5tGP-1aUSdZpjHlhZYSQ','1fQvf0lJQ4Dck-oKnyrDNPZZyb3VlkWuS','1jSBn_OxnDEibVdfx64bTTg-vc-O1ttyK','1FdiiJ6A45xgT9f_RcM5eUfRSF00o3VTf','1EGsbBwOEl__48yRwqDPVzvAcubivxTQC','19USBnEJdRF8zvx0UbhtiuIlan9zSkUD7','1Qn-0vVRGcdwsUgZPdx7KHIGfhWwruDKg','1lhReHuohaOHipNx784WmIF0YE0e-ggba','1opI6z7lfKK3AuhfqZsnoI3I3wSaiMdnh','1fj5E9TPJf1qgwCqUV3xJESPh5NVVZLoO','1Afku1UYx4p9tWkLqXwIMiX_wAT8Yy573','15OB8tD2eaQt54diVzPV90feEX2NxoB0o'],brief:'A celebratory catered dessert service made for a 20-year company milestone, with a polished presentation designed around the event.',tags:['20-year milestone','Catered dessert service']},
+  {type:'Birthday celebration',title:"Faye’s Birthday Celebration",images:['1E5TzUI06HUBlJ7z8H3_7mnydUZvn3MJ2','1Fw8OFzpbJgxNMXNHedXPrrZUmQRJcI4l','1YwFSXfuLzgJZoVUyGIKZIYZQfYZk1_UK','1yotla1S0h8152E9aUaKWzeET40sIcDoA','1hxwtyfgm-CjHsVtYXILX0qCgHgqxUIoe','1ZokCIdveqIgb43JPtVc341ufByg-tTaj','1sx2bNfy3EjPNL_Ba9JavB5SxoSWWzrSK','1jNTLQclsSIjieeCRv1OVxHbkF5-HJgVd','1Zh-gGMRad7RTXQUyujFBVFutc8wiPfSn','1LSTv4W6e7H2n_2Fm5gh0rwD9htLRUNlY','1nnzSIbyXJRhUpKa9LI0VmJS7UnesLs0-','1H_6gvRLOdOHqVncAkwIHAsczVWZeUroj','1aNUhh5jU_Gl3eFrbUFC2NQCVkVo0uv1-','1gcGiJub-wdhFcGHrj1gAv7-VQRc1fudy','1ab6E9tDquI8e_U2nWNXM2rO6vr40nnZI','1wQHNqM0Zo4AFQI2ci1Uw-qRVhP0n9T3X','1_RurEgbw_TchO4HiYU3_OlU3o5q4-ru_','1hlpTyqTgP7zRaiUcHocZQjYKRExFd6eg','1xcWh-qNM23o_ckOPdp9LqeNrKnrX5ics','19YSQJFMQLZ_lKPAtscZW3gRgd-WPf2zC','1Bhr2iNDfM7Ze5SI8aoxOQYEWY2WUPIgc','1ThFlMo-t3YG2u-NgLJYt2KZY2QVoFh9S','1t54OAH1PRKAWJcblZRnFroHgjXpMZFbt','1cuaskLBEfm2x1D6MU-PwZnq5WNVoSt7N','15klFFjt_1jY2t6JvzftkalsTiPW71Mjc','1fvB6BmkXt2lXmwEh-o2U4UNGAGs6BCul','184ocKNXzGVSPIxod0LMyDlMBx7fl6Hu6'],brief:'A custom celebration designed to make a meaningful birthday feel even more special—one thoughtful detail, beautiful dessert, and shared moment at a time.',tags:['Milestone birthday','Custom celebration']},
+  {type:'Birthday celebration',title:"Shaun’s 50th Birthday",images:['1oBz2oqgb7HJPjyhxPsDfRPGOenUmgoHL','1Vvh1KnHvpklkEvYw2_TFqCNMegSXjxP8','1-YkZV9YabzkK01qjKMIOFt14pdU65ny-','1ea_dG__uRfL-IwoONd4SWPzg7zRRPRMT','1f-abVk79mKTO8bPq2bpT6F3D_v_Xzl2i'],brief:'A personalized 50th birthday dessert experience crafted to honor the guest of honor and bring an extra layer of joy to the gathering.',tags:['50th birthday','Custom dessert service']},
+  {type:'Bachelorette dinner',title:'Wildly in Love Bachelorette Dinner',images:['1LCJkZC0HHHchW_BPfxzzji25gvfHTEGc','1DsQadJ1IkB9wGyoFb4YCfqeG-vfV3ULL','1HHndhxaUju9XCVguEsoLYASNQW-PY_s2','1oDdukQNVKkHirzEUOQceveH-wbAId9Q_','14c9mklfNcKK0RnPWcYktZ5b-zKnKpdwL','1FsGH6jgYY6yrFqHFcKEP4FNIUR-kf1Xr','1J0aIJNpy3O8IRJ5MG5rmx83T5qgI35VG','1IC7Wzk3SgJKnC_Z5oNBp9pKf1meJgAnO','1AnN3xOhb_qntABQ00R311utQJ2B8qzV6','1mrLPd-fbedfQpxT4JwPcRSTEwF_OBCey','1bBskqP1TclXJhOQs21aiS0Ytj5fTXYZV','1_DfPhTHFsQzk8eJJPDAYxyFeAVx8LEfT','1bJsQqqONuTcwGKTc7EmnHgKuU6QDgwow','18LmhlHaEV8K-d_mskxURxGtZoc7heFVc'],brief:'A joyful, one-of-a-kind dessert experience for a bachelorette dinner—created to complement the celebration and make the table feel unforgettable.',tags:['Bachelorette dinner','Curated dessert experience']},
+  {type:'Cake collection',title:'Custom Cakes',images:['1OC15zVMNj-kEsMPLR6qdjCqcKqxlKIjY','17vlNcc6j2HX0yPWeOPr3mXAg4tz9oJgl','1rOumasxkCey8xG4_eT9G6pigaByLBeEO','1N7ONxcnoZlOM9aEHpocMCxiFuBQS5RZy','11lC9wSdmCWPGn65hYQTmzrgfpeVh-Nil','1OEptfhaDZw6-_xKKlmzE3PzNaU1WPgZT','1PXe0XJK4B3v1A-TTfci4WiHIpz8Bpird','18irXvuYo-rQRsB_mebDJoUrjxtSS0IWh'],brief:'A collection of custom cakes made for celebrations of every size, with intentional design, personal details, and a finish that feels made just for the moment.',tags:['Custom cakes','Celebration designs']}
 ];
 const illustrationItems=[
   ['1bp2-UNQPyRmboHlbFT9claKVRvA16EHm','Assorted Themed Desserts'],['1eBIOa11AlqSxUuAUOT5uDv7u2n701Mqc','Apple of My Eye Cocktail'],['1CdXW7dNNRIC_5WIkWlOAbA6MlNUURwzn','Peach Prosciutto Wedge'],['1ug0JiRF73GHLZVEsxo9FLYKOINxJcBnw','Toasted Pecan Brownies'],['1noHwv8JTVfjXvLMGq5zuj2E9mGzhGh-e','Peppermint Kiss Brownies'],['1fRpSvWaXvFpSFuBWkL9pQxo3bjtKUVJL','Berry Bliss Cheesecakes'],['125Qf_3i_7pmnbreZitHvU7ILnMCCOBVB','Salted Caramel Chocolate Mousse Cups'],['1wnv62AMeQKyeoSlspgcwyE7XuCYS51vV','White Chocolate Strawberry Mousse Cups'],['1PmWgbg0rJDqP1NSoM-K0d90mXC39rsLw','Smoked Teriyaki Sausage & Pineapple'],['1T4En_QHXr8xonvr4ZEAD31WdxzSFkAG_','Tzatziki Meatball Skewers'],['1Pu1YmAUzBmcf5K56m9G4nH-eTzvSkJNT','Lox Cucumber Bites'],['1w0x9_TM_o6lMP-6HGV6bqxbnpHhjyS6L','Aunt Fawn’s Caramel Popcorn'],['1Pg5z0tJfy9rRQVmGqIEAPu62Fyn-aOTl','Pumpkin Rolls'],['1mw9ItV0TtUUFWBh_YiozQN6gIxMHmm8h','Pumpkin Cookies']
 ];
 document.getElementById('gal-projects').innerHTML=`<div style="margin-bottom:2rem;"><p class="s-p">A look at the celebrations we have been honored to serve. Event-specific guest count, location, and catered-service details will be added as each story is finalized.</p></div><div class="portfolio-grid">${portfolioEvents.map(e=>`<article class="portfolio-card"><div class="pc-images"><div class="pc-img pc-img-main"><img src="${driveThumb(e.images[0])}" alt="${e.title}"></div><div class="pc-img pc-img-sub"><img src="${driveThumb(e.images[1])}" alt="${e.title} detail"></div><div class="pc-img pc-img-sub"><img src="${driveThumb(e.images[2])}" alt="${e.title} detail"></div></div><div class="pc-body"><div class="pc-event-type"><span class="pc-event-dot"></span><span class="pc-event-label">${e.type}</span></div><h3 class="pc-title">${e.title}</h3><p class="pc-brief">${e.brief}</p><p class="portfolio-note">Package details coming soon: guest count, location &amp; catered services.</p><div class="pc-params">${e.tags.map(t=>`<span class="pc-param green">${t}</span>`).join('')}</div></div></article>`).join('')}</div>`;
 document.getElementById('gal-illustrations').innerHTML=`<div style="max-width:560px;margin-bottom:2.5rem;"><p class="s-p">Original event illustrations by Breezy Bakes. Each drawing is titled by its menu item and displayed here as its own gallery.</p></div><div class="illus-grid">${illustrationItems.map(([id,title])=>`<figure class="illus-item"><img src="${driveThumb(id)}" alt="${title}"><figcaption class="illus-cap"><div class="illus-cap-title">${title}</div></figcaption></figure>`).join('')}</div>`;
+document.body.insertAdjacentHTML('beforeend','<div class="event-modal" id="eventModal" aria-hidden="true"><div class="event-modal-inner"><div class="event-modal-top"><div><p class="s-txt" style="color:var(--gr);margin:0 0 .6rem">Event gallery</p><h2 id="eventModalTitle"></h2></div><button class="event-close" onclick="closeEventGallery()">Close ×</button></div><div class="event-photo-grid" id="eventPhotoGrid"></div></div></div>');
+function openEventGallery(index){const event=portfolioEvents[index];document.getElementById('eventModalTitle').textContent=event.title;document.getElementById('eventPhotoGrid').innerHTML=event.images.map((id,photoIndex)=>`<img loading="lazy" src="${driveThumb(id)}" alt="${event.title} photo ${photoIndex+1}">`).join('');const modal=document.getElementById('eventModal');modal.classList.add('on');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
+function closeEventGallery(){const modal=document.getElementById('eventModal');modal.classList.remove('on');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+document.querySelectorAll('#gal-projects .portfolio-card').forEach((card,index)=>{card.addEventListener('click',()=>openEventGallery(index));card.setAttribute('role','button');card.setAttribute('tabindex','0');card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openEventGallery(index);}});});
+
+// ── HOMEPAGE IMAGE TREATMENT ──
+// Original Drive artwork is kept intact; the browser applies a consistent grade.
+document.getElementById('packages')?.remove();
+const homeHero=document.querySelector('.hero-art');
+const homeHeroImage=homeHero?.querySelector('.sk-main img');
+if(homeHero&&homeHeroImage){homeHero.classList.add('home-drawings');homeHeroImage.src=driveThumb('1R2iRgMejtGiYpwoHFUgKL5zuRwYuI-5l');homeHeroImage.alt='Breezy Bakes dinner table drawing';homeHeroImage.classList.add('media-mono');const heroLabel=homeHero.querySelector('.sk-main .sk-lbl');if(heroLabel)heroLabel.textContent='A custom experience, drawn from the table up';}
+const philosophyImage=document.querySelector('.phil-img-wrap img');
+if(philosophyImage){philosophyImage.src=driveThumb('1vl701t2dE1d18d6OUG7lnzNAhJcaRNFw');philosophyImage.alt='Breezy Bakes set table drawing';philosophyImage.classList.add('media-mono');}
 
 // ── PRODUCTS ──
 const imgMap = {
