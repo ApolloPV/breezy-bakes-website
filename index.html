@@ -140,9 +140,9 @@ nav a:hover::after,nav a.active::after{transform:scaleX(1);}
 .t-card::before{display:none;}
 .table-story{padding:0 5vw 6rem;background:var(--paper2);}
 .table-story-intro{padding:4.5rem 0 1.6rem;max-width:560px;}
-.table-pair{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.8rem;}
-.table-pair figure{margin:0;overflow:hidden;position:relative;background:var(--paper);height:390px;}
-.table-pair img{width:100%;height:100%;object-fit:cover;display:block;}
+.table-pair{display:grid;grid-template-columns:1fr;gap:.8rem;margin-bottom:.8rem;}
+.table-pair figure{margin:0;overflow:hidden;position:relative;background:var(--paper);}
+.table-pair img{width:100%;height:auto;object-fit:contain;display:block;}
 .table-pair figcaption{position:absolute;left:1rem;bottom:1rem;padding:.35rem .6rem;background:rgba(250,248,244,.86);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);}
 .table-story-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,260px);gap:.8rem;}
 .table-story-grid figure{margin:0;overflow:hidden;position:relative;background:var(--paper);}
@@ -154,7 +154,7 @@ nav a:hover::after,nav a.active::after{transform:scaleX(1);}
 .shop-cover-copy .s-txt,.shop-cover-copy .s-h{color:var(--paper);}
 .inquiry-page{padding:10rem 5vw 6rem;min-height:100vh;background:var(--paper2);}
 .inquiry-page .bespoke-grid{max-width:1100px;margin:0 auto;}
-@media(max-width:700px){.table-pair{gap:.45rem;}.table-pair figure{height:250px;}.cooking-pair{gap:.45rem;}.cooking-pair img{height:180px;}.table-story-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,180px);gap:.45rem;}.shop-cover{height:66vw;min-height:330px;margin-top:-3.5rem;}.shop-cover-copy{padding:2rem 5vw;}.inquiry-page{padding-top:8rem;}}
+@media(max-width:700px){.table-pair{gap:.45rem;}.cooking-pair{gap:.45rem;}.cooking-pair img{height:180px;}.table-story-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,180px);gap:.45rem;}.shop-cover{height:66vw;min-height:330px;margin-top:-3.5rem;}.shop-cover-copy{padding:2rem 5vw;}.inquiry-page{padding-top:8rem;}}
 .p-badge{position:absolute;top:.8rem;left:.8rem;font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .65rem;border-radius:100px;font-weight:500;}
 .bp{background:var(--wh);color:var(--brd);}
 .bs{background:rgba(92,122,94,0.14);color:var(--grd);border:1px solid rgba(92,122,94,0.25);}
