@@ -130,14 +130,28 @@ nav a:hover::after,nav a.active::after{transform:scaleX(1);}
 .hero-art.home-drawings .sk-main{width:100%;top:20px;}
 .hero-art.home-drawings .sk-main img{height:360px;object-fit:cover;object-position:center;}
 .hero-art.home-drawings .sk-sm,.hero-art.home-drawings .wc-tag{display:none;}
-.hero.full-bleed-sketch{grid-template-columns:1fr;background-image:linear-gradient(90deg,rgba(250,248,244,.95) 0%,rgba(250,248,244,.82) 46%,rgba(250,248,244,.55) 100%),url('https://drive.google.com/thumbnail?id=12e97t3xzOtBbJty04OioW4Ky_YPDfxaN&sz=w2000');background-size:cover;background-position:center;}
+.hero.full-bleed-sketch{grid-template-columns:1fr;background-image:linear-gradient(90deg,rgba(250,248,244,.95) 0%,rgba(250,248,244,.82) 46%,rgba(250,248,244,.55) 100%),url('https://drive.google.com/thumbnail?id=1R2iRgMejtGiYpwoHFUgKL5zuRwYuI-5l&sz=w2000');background-size:cover;background-position:center;}
 .hero.full-bleed-sketch::before{background:linear-gradient(90deg,rgba(250,248,244,.2),rgba(250,248,244,.04));}
 .hero.full-bleed-sketch>div:first-child{position:relative;z-index:1;}
 .hero.full-bleed-sketch .hero-art{display:none;}
 .cooking-pair{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
 .cooking-pair img{width:100%;height:430px;object-fit:cover;display:block;}
 .t-card{overflow:hidden;isolation:isolate;}
-.t-card::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(250,248,244,.91),rgba(250,248,244,.96)),var(--table-sketch);background-size:cover;background-position:center;filter:grayscale(1) contrast(1.06);z-index:-1;}
+.t-card::before{display:none;}
+.table-story{padding:0 5vw 6rem;background:var(--paper2);}
+.table-story-intro{padding:4.5rem 0 1.6rem;max-width:560px;}
+.table-story-grid{display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:330px 250px;gap:.8rem;}
+.table-story-grid figure{margin:0;overflow:hidden;position:relative;background:var(--paper);}
+.table-story-grid figure:nth-child(1){grid-row:span 2;}
+.table-story-grid img{width:100%;height:100%;object-fit:cover;display:block;}
+.table-story-grid figcaption{position:absolute;left:1rem;bottom:1rem;padding:.35rem .6rem;background:rgba(250,248,244,.86);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);}
+.shop-cover{position:relative;margin:-5.5rem -5vw 3.8rem;height:min(60vw,520px);min-height:360px;overflow:hidden;background:var(--paper2);}
+.shop-cover img{width:100%;height:100%;object-fit:cover;display:block;}
+.shop-cover-copy{position:absolute;inset:0;display:flex;align-items:flex-end;padding:3rem 5vw;background:linear-gradient(90deg,rgba(25,30,24,.62),rgba(25,30,24,.08) 66%);color:var(--paper);}
+.shop-cover-copy .s-txt,.shop-cover-copy .s-h{color:var(--paper);}
+.inquiry-page{padding:10rem 5vw 6rem;min-height:100vh;background:var(--paper2);}
+.inquiry-page .bespoke-grid{max-width:1100px;margin:0 auto;}
+@media(max-width:700px){.table-story-grid{grid-template-columns:1fr 1fr;grid-template-rows:240px 180px;gap:.45rem;}.shop-cover{height:66vw;min-height:330px;margin-top:-3.5rem;}.shop-cover-copy{padding:2rem 5vw;}.inquiry-page{padding-top:8rem;}}
 .p-badge{position:absolute;top:.8rem;left:.8rem;font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .65rem;border-radius:100px;font-weight:500;}
 .bp{background:var(--wh);color:var(--brd);}
 .bs{background:rgba(92,122,94,0.14);color:var(--grd);border:1px solid rgba(92,122,94,0.25);}
@@ -406,9 +420,9 @@ footer{background:var(--ink);color:rgba(250,248,244,0.45);padding:5rem 5vw 3rem;
   <ul>
     <li><a href="#" onclick="showPage('main',this);scrollTo('philosophy')">Our Way</a></li>
     <li><a href="#" onclick="showPage('gallery',this)" class="nav-gallery-link">Portfolio</a></li>
-    <li><a href="#" onclick="showPage('main',this);scrollTo('inquiry')" style="color:var(--grd);font-weight:500;">Inquiry</a></li>
+    <li><a href="#" onclick="showPage('inquiry',this)" style="color:var(--grd);font-weight:500;">Inquiry</a></li>
   </ul>
-  <a href="#" class="btn-fill" onclick="showPage('main',null);scrollTo('inquiry')" style="padding:.5rem 1.4rem;font-size:.7rem;">Get in Touch</a>
+  <a href="#" class="btn-fill" onclick="showPage('inquiry',null)" style="padding:.5rem 1.4rem;font-size:.7rem;">Get in Touch</a>
 </nav>
 
 <!-- ═══════════ MAIN PAGE ═══════════ -->
@@ -843,6 +857,9 @@ document.querySelectorAll('#gal-projects .portfolio-card').forEach((card,index)=
 // ── HOMEPAGE IMAGE TREATMENT ──
 // Original Drive artwork is kept intact; the browser applies a consistent grade.
 document.getElementById('packages')?.remove();
+document.getElementById('inquiry')?.remove();
+document.body.insertAdjacentHTML('beforeend',`<div class="page" id="page-inquiry"><main class="inquiry-page"><div class="bespoke-grid"><div><div class="s-tag"><span class="s-bar"></span><span class="s-txt">Inquire</span></div><h1 class="s-h" style="margin-bottom:1.2rem">How can we be<br>part of your <em>event?</em></h1><p class="bespoke-intro">Every menu we create is built entirely around you — your occasion, your flavors, your vision. Tell us what you are celebrating, and we will build a custom proposal around it.</p><a href="#" class="btn-fill" style="background:var(--grm);" onclick="showPage('gallery',null)">See Portfolio →</a></div><div class="order-form"><div class="form-title">Tell us about your event</div><div class="frow"><div class="fg"><label>Your Name</label><input type="text" placeholder="Jane Smith"></div><div class="fg"><label>Email</label><input type="email" placeholder="jane@email.com"></div></div><div class="frow"><div class="fg"><label>Phone</label><input type="tel" placeholder="(555) 000-0000"></div><div class="fg"><label>Event Date</label><input type="date"></div></div><div class="frow"><div class="fg"><label>What are we making?</label><select><option>Desserts only</option><option>Savory appetizers only</option><option>Full event menu</option><option>Custom cake</option><option>Wedding or celebration</option><option>Menu illustrations only</option><option>Surprise me</option></select></div><div class="fg"><label>Guest Count</label><select><option>Under 15 (intimate)</option><option>15–40</option><option>40–80</option><option>80–150</option><option>150+</option></select></div></div><div class="frow solo"><div class="fg"><label>Tell us about your vision, theme, or any specific flavors in mind</label><textarea placeholder="The more detail you share, the better we can tailor the experience to you."></textarea></div></div><button class="form-btn" onclick="submitForm()">Send My Vision →</button></div></div></main></div>`);
+document.querySelectorAll('[onclick*="scrollTo(\'inquiry\')"]').forEach(link=>link.onclick=e=>{e.preventDefault();showPage('inquiry',null);});
 document.querySelector('.hero')?.classList.add('full-bleed-sketch');
 const homeHero=document.querySelector('.hero-art');
 const homeHeroImage=homeHero?.querySelector('.sk-main img');
@@ -851,6 +868,10 @@ const philosophyImage=document.querySelector('.phil-img-wrap img');
 if(philosophyImage){const wrap=philosophyImage.closest('.phil-img-wrap');if(wrap){wrap.classList.add('cooking-pair');wrap.innerHTML=`<img class="media-mono" src="${driveThumb('1ebvciwnsyXhp9ih7Z9PqbgF1r8N9nioJ')}" alt="Breezy Bakes preparing food"><img class="media-color" src="${driveThumb('10fSzBd6bGumwtj4A5qdabgtW2G3VOolz')}" alt="Breezy Bakes setting an event table">`;}}
 const reviewSketches=['1vl701t2dE1d18d6OUG7lnzNAhJcaRNFw','12e97t3xzOtBbJty04OioW4Ky_YPDfxaN','1R2iRgMejtGiYpwoHFUgKL5zuRwYuI-5l'];
 document.querySelectorAll('.t-card').forEach((card,index)=>card.style.setProperty('--table-sketch',`url("${driveThumb(reviewSketches[index])}")`));
+const reviews=document.getElementById('testimonials');
+if(reviews){reviews.insertAdjacentHTML('beforebegin',`<section class="table-story" aria-label="From the table"><div class="table-story-intro"><div class="s-tag"><span class="s-bar"></span><span class="s-txt">From the table</span></div><h2 class="s-h">A celebration,<br><em>in motion.</em></h2></div><div class="table-story-grid"><figure><img class="media-mono" src="${driveThumb('1vl701t2dE1d18d6OUG7lnzNAhJcaRNFw')}" alt="Set table sketch"><figcaption>The set table</figcaption></figure><figure><img class="media-mono" src="${driveThumb('12e97t3xzOtBbJty04OioW4Ky_YPDfxaN')}" alt="Table in motion sketch"><figcaption>Table in motion</figcaption></figure><figure><img class="media-mono" src="${driveThumb('1ebvciwnsyXhp9ih7Z9PqbgF1r8N9nioJ')}" alt="Breezy Bakes cooking"><figcaption>In the kitchen</figcaption></figure><figure><img class="media-color" src="${driveThumb('10fSzBd6bGumwtj4A5qdabgtW2G3VOolz')}" alt="Breezy Bakes charcuterie table"><figcaption>Made for gathering</figcaption></figure></div></section>`);}
+const shop=document.getElementById('shop');
+if(shop){shop.insertAdjacentHTML('afterbegin',`<div class="shop-cover"><img class="media-color" src="${driveThumb('10fSzBd6bGumwtj4A5qdabgtW2G3VOolz')}" alt="Breezy Bakes charcuterie table"><div class="shop-cover-copy"><div><div class="s-tag"><span class="s-bar" style="background:var(--paper)"></span><span class="s-txt">The Bakes</span></div><h2 class="s-h">What we <em>make</em></h2></div></div></div>`);}
 
 // ── PRODUCTS ──
 const imgMap = {
