@@ -494,7 +494,7 @@ footer{background:var(--ink);color:rgba(250,248,244,0.45);padding:5rem 5vw 3rem;
         <button class="ftab on" onclick="filterP('all',this)">All</button>
         <button class="ftab" onclick="filterP('dessert',this)">Desserts</button>
         <button class="ftab" onclick="filterP('savory',this)">Savory</button>
-        <button class="ftab" onclick="filterP('special',this)">Pastries</button>
+        <button class="ftab" onclick="filterP('pastry',this)">Pastries &amp; Treats</button>
       </div>
     </div>
     <div class="prod-grid" id="prodGrid"></div>
@@ -892,11 +892,9 @@ const products = [
   {id:1,name:'Strawberry White Chocolate Mousse',cat:'dessert',price:0,unit:'inquire',desc:'White chocolate mousse layered with vanilla bean sponge, fresh strawberries, and strawberry purée. Topped with whipped cream. Served in a 4.5" disposable glass.',badge:'Signature',bc:'bs',img:'mousse_strawberry',contain:true},
   {id:2,name:'Chocolate Salted Caramel Mousse',cat:'dessert',price:0,unit:'inquire',desc:'Dark chocolate mousse, chocolate sponge, salted caramel layer, dark chocolate ganache, and whipped cream with a caramel drizzle. A full layered dessert.',badge:'Signature',bc:'bs',img:'mousse_chocolate',contain:true},
   {id:3,name:'Vanilla Bean Cheesecake',cat:'dessert',price:0,unit:'inquire',desc:'Silky vanilla bean cheesecake on a brown butter graham crust, finished with fresh berry coulis and blueberry, raspberry &amp; strawberry garnish.',badge:'Bestseller',bc:'bp',img:'cheesecake',contain:true},
-  {id:4,name:'Salted Caramel Popcorn',cat:'special',price:0,unit:'inquire',desc:'House-made caramel corn with a perfectly balanced sea salt finish. A crowd favorite as a savory-sweet accompaniment or standalone treat.',badge:'',bc:'',img:'popcorn',contain:false},
-  {id:5,name:'Cinnamon Roll',cat:'special',price:0,unit:'inquire',desc:'Pull-apart cinnamon rolls with a cream cheese swirl, made from scratch with a buttery, laminated dough.',badge:'',bc:'',img:'cinnamon_roll',contain:false},
-  {id:6,name:'Seasonal Custom Creation',cat:'dessert',price:0,unit:'inquire',desc:'A rotating seasonal offering built entirely around a specific ingredient, memory, or brief. Available as a dessert, pastry, or savory item.',badge:'Custom',bc:'bs',img:'artwork1',contain:false},
-  {id:7,name:'Savory Appetizer Board',cat:'savory',price:0,unit:'inquire',desc:'Curated savory bites designed to complement your event\'s dessert menu. Thematic, intentional, and built for the occasion. Minimum 15 guests.',badge:'Savory',bc:'bsav',img:'artwork2',contain:false},
-  {id:8,name:'Illustrated Menu Cards',cat:'special',price:0,unit:'inquire',desc:'Original ink and watercolor illustration of your event menu. Available as a digital file or printed keepsake. A lasting record of the experience.',badge:'Add-on',bc:'bs',img:'png_main',contain:true},
+  {id:4,name:'Salted Caramel Popcorn',cat:'pastry',price:0,unit:'inquire',desc:'House-made caramel corn with a perfectly balanced sea salt finish. A crowd favorite as a sweet-and-salty treat.',badge:'',bc:'',img:'popcorn',contain:false},
+  {id:5,name:'Cinnamon Rolls',cat:'pastry',price:0,unit:'inquire',desc:'Pull-apart cinnamon rolls with a cream cheese swirl, made from scratch with a buttery, laminated dough.',badge:'',bc:'',img:'cinnamon_roll',contain:false},
+  {id:6,name:'Savory Appetizer Board',cat:'savory',price:0,unit:'inquire',desc:'Curated savory bites designed around your event. Thematic, intentional, and built for gathering.',badge:'Savory',bc:'bsav',img:'artwork2',contain:false},
 ];
 
 let cart=[];
