@@ -957,6 +957,37 @@ function rmItem(id){cart=cart.filter(x=>x.id!==id);updateCart();}
 function toggleCart(){document.getElementById('cartPanel').classList.toggle('on');document.getElementById('overlay').classList.toggle('on');}
 function checkout(){const sum=cart.reduce((s,i)=>s+i.price*i.qty,0);alert('In a live store this connects to Stripe checkout.\n\nOrder total: $'+sum.toFixed(2));}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
+
+// Route both inquiry layouts through the temporary lead-email service.
+// This can be swapped for the HubSpot embed once the CRM connection is ready.
+function enableInquiryForms(){
+  const fields=['name','email','phone','event_date','request_type','guest_count','event_vision'];
+  document.querySelectorAll('.order-form').forEach(container=>{
+    if(container.tagName==='FORM')return;
+    const form=document.createElement('form');
+    form.className=container.className;
+    form.action='https://formsubmit.co/zabrina@getbreezybakes.com';
+    form.method='POST';
+    form.acceptCharset='UTF-8';
+    container.parentNode.replaceChild(form,container);
+    while(container.firstChild)form.appendChild(container.firstChild);
+    form.querySelectorAll('input,select,textarea').forEach((field,index)=>field.name=fields[index]||`field_${index+1}`);
+    const name=form.querySelector('input[name="name"]');
+    const email=form.querySelector('input[name="email"]');
+    if(name)name.required=true;
+    if(email)email.required=true;
+    const subject=document.createElement('input');
+    subject.type='hidden';subject.name='_subject';subject.value='New Breezy Bakes website inquiry';
+    const template=document.createElement('input');
+    template.type='hidden';template.name='_template';template.value='table';
+    const honey=document.createElement('input');
+    honey.type='text';honey.name='_honey';honey.tabIndex=-1;honey.autocomplete='off';honey.style.display='none';
+    form.prepend(honey,template,subject);
+    const button=form.querySelector('.form-btn');
+    if(button){button.type='submit';button.removeAttribute('onclick');}
+  });
+}
+enableInquiryForms();
 </script>
 </body>
 </html>
